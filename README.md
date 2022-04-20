@@ -1,4 +1,42 @@
 # Mobile-Banking
+
+## Prerequisites
+
+### MacOS
+
+Install Node JD (version 17)
+```
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+$ source .bash_profile 
+$ nvm install 17  
+$ node -v
+```
+Install Ionic Framework
+```
+$ npm install -g @ionic/cli
+```
+Install Android Developer Tools
+Build for android
+```
+$ export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+# avdmanager, sdkmanager
+$ export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin
+# adb, logcat
+$ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+# emulator
+$ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+```
+Run on Native
+```
+$ npm run build-preprod android
+$ adb install ./platforms/android/app/build/outputs/apk/debug/app-debug.apk
+$ ionic cordova run android
+```
+
+Debug using Chrome, copy and paste.
+
+chrome://inspect/#devices
+```
  
 ## Getting started
 
