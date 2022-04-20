@@ -4,7 +4,7 @@
 
 ### MacOS
 
-Install Node JD (version 17)
+Install Node JS (version 17)
 ```
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 $ source .bash_profile 
