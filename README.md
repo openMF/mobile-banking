@@ -1,21 +1,22 @@
-# banca-movil
+# Mobile-Banking
  
 ## Getting started
 
 Clone the project:
 
-    $ git clone https://github.com/InfotecMexico/banca-por-internet.git
-
+```
+    $ git clone https://github.com/openMF/mobile-banking.git
+```
 Install dependencies:
-
-    $ cd banca-movil
+```
+    $ cd mobile-banking
     
     $ npm install
-
+```
 Run development web-server:
-
+```
     $ npm run serve
-
+```
 Folder structure 
 
 ```
