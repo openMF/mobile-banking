@@ -1,0 +1,92 @@
+<app-header [svg]="true" [menu]="true" [title]="'Límites Transaccionales'" [img]="'/assets/header-icons/ajustes.png'"></app-header>
+
+<ion-content id="content">
+
+  <div style="height: 100%;">
+
+    <form class="container-big" [formGroup]="form">
+
+      <h2 style="font-weight: bold;" class="title-header">Transferencias cuentas otros bancos (SPEI)</h2> 
+        <h3>Importe máximo por transferencia <b>(${{ form.get('maxAmountTransactionByTransactionSpei').value | money }})</b> </h3>
+      <ion-item>
+        <ion-range formControlName="maxAmountTransactionByTransactionSpei" min="0" max="15000" step="1000" snaps="true" color="secondary">
+          <ion-label slot="start">$0</ion-label>
+          <ion-label slot="end">$15,000</ion-label>
+        </ion-range>
+      </ion-item>
+    
+      <h3>Importe máximo por día <b>(${{ form.get('maxTransactionAmountSpei').value | money }})</b></h3> 
+      <ion-item>
+        <ion-range formControlName="maxTransactionAmountSpei" min="0" max="50000" step="1000" snaps="true" color="secondary">
+          <ion-label slot="start">$0</ion-label>
+          <ion-label slot="end">$50,000</ion-label>
+        </ion-range>
+      </ion-item>
+    
+      <h3>Número máximo de transacciones <b>({{ form.get('maxNumberTransactionSpei').value | money }})</b></h3> 
+      <ion-item>
+        <ion-range formControlName="maxNumberTransactionSpei" min="0" max="10" step="1" snaps="true" color="secondary">
+          <ion-label slot="start">0</ion-label>
+          <ion-label slot="end">10</ion-label>
+        </ion-range>
+      </ion-item>
+
+    <ion-fab horizontal="center" vertical="bottom">
+      <ion-fab-button (click)="gotBottom()" size="small">
+        <ion-icon name="chevron-down-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-fab-button>
+    </ion-fab>
+    
+    </form>
+  </div>
+
+  <div style="height: 100%;">
+
+    <form class="container-big" (ngSubmit)="saveChanges()" [formGroup]="form">
+
+    <ion-fab horizontal="center" vertical="start">
+      <ion-fab-button (click)="gotTop()" size="small">
+        <ion-icon name="chevron-up-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-fab-button>
+    </ion-fab> 
+
+    <br><br>
+
+    <h2 style="font-weight: bold;" class="title-header">Transferencias cuentas Banco del Bienestar</h2> 
+    <h3>Importe máximo por transferencia <b>(${{ form.get('maxAmountTransactionByTransaction').value | money }})</b> </h3>
+   <ion-item>
+     <ion-range formControlName="maxAmountTransactionByTransaction" min="0" max="15000" step="1000" snaps="true" color="secondary">
+       <ion-label slot="start">$0</ion-label>
+       <ion-label slot="end">$15,000</ion-label>
+     </ion-range>
+   </ion-item>
+ 
+   <h3>Importe máximo por día <b>(${{ form.get('maxTransactionAmount').value | money }})</b></h3> 
+   <ion-item>
+     <ion-range formControlName="maxTransactionAmount" min="0" max="50000" step="1000" snaps="true" color="secondary">
+       <ion-label slot="start">$0</ion-label>
+       <ion-label slot="end">$50,000</ion-label>
+     </ion-range>
+   </ion-item>
+ 
+   <h3>Número máximo de transacciones <b>({{ form.get('maxNumberTransaction').value | money }})</b></h3> 
+   <ion-item>
+     <ion-range formControlName="maxNumberTransaction" min="0" max="10" step="1" snaps="true" color="secondary">
+       <ion-label slot="start">0</ion-label>
+       <ion-label slot="end">10</ion-label>
+     </ion-range>
+   </ion-item>
+
+   <div class="container-big" style="margin-top: 2.5rem;">
+    <ion-button type="submit" expand="block" fill="outline">Guardar Cambios</ion-button>
+  </div>
+
+  </form>
+
+  </div>
+
+</ion-content>
+
+

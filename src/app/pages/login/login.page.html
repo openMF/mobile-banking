@@ -1,0 +1,47 @@
+<app-header [svg]="true" [bottomTitle]="textTitle"></app-header>
+
+<ion-content>
+  <div  *ngIf="showImage" class="container-image" style="width: 60%;margin:auto; margin-bottom: -1rem;">
+    <ion-img src="/assets/logo-banbi-green.png" alt="Logo"></ion-img>
+  </div>
+  <ion-grid>
+    <div class="container">
+      <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+        <ion-item>
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-input [disabled]="disabledButtons" (input)="toOnlyRegex('username', '[^0-9]')" maxlength="10" type="tel" formControlName="username" placeholder="{{ 'Username' | translate }}" clearInput></ion-input>
+        </ion-item>
+        <app-input-error [control]="loginForm.controls.username"></app-input-error>
+
+        <ion-item>
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-input [disabled]="disabledButtons" (input)="toOnlyRegex('password', '[^A-Za-z0-9]', false)" maxlength="8" formControlName="password" [type]="type" placeholder="{{ 'Password' | translate }}"
+            clearInput></ion-input>
+          <ion-icon *ngIf="icon; else elseTemplate" (click)="viewPassword()" name="eye-off-outline" slot="end">
+          </ion-icon>
+          <ng-template #elseTemplate>
+            <ion-icon (click)="viewPassword()" name="eye-outline" slot="end"></ion-icon>
+          </ng-template>
+        </ion-item>
+        <app-input-error [control]="loginForm.controls.password"></app-input-error>
+        <ion-row>
+          <ion-col align-self-center class="text-center">
+            <ion-button type="submit" [disabled]="loginForm.invalid || disabledButtons" expand="block" color="primary">{{ 'Sign in' | translate }}</ion-button>
+            <ion-button (click)="Route('/registration')" expand="block" style="margin-top: 1rem;" color="medium">
+              {{ 'Register ' | translate }}
+            </ion-button>
+            <a style="text-decoration: none; font-size: 12px;" [routerLink]="['/forgot-password']"
+            class="small-text">{{ 'Did you forget your password?' | translate }}</a>
+          </ion-col>
+        </ion-row>
+      </form>
+        <br>
+        <!-- <div class="soft-token">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-button [routerLink]="['/soft-token']" type="button" expand="block" color="primary">{{ 'Soft Token' | translate }}</ion-button>
+      </div> -->
+    </div>
+  </ion-grid>
+</ion-content>
+
+<app-footer></app-footer>

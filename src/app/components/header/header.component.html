@@ -1,0 +1,39 @@
+
+<ion-header class="svg-correction ion-no-border" [ngStyle]="{'margin-bottom': img ? '80px' : '0px' }" no-border>
+  <!-- <app-svg *ngIf="svg"></app-svg> -->
+  <ion-img *ngIf="img" style="z-index: 105" class="profile-photo" src="{{img}}"></ion-img>
+  <ion-toolbar>
+    <ion-buttons *ngIf="backButton" slot="start">
+      <ion-back-button color="secondary" icon="chevron-back-outline" defaultHref="{{defaultHref ? defaultHref : 'dashboard'}}"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="menu" slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-button *ngIf="notifications" (click)="goNotifications()" style="--background: none; --box-shadow: none;" slot="end">
+      <ion-icon name="notifications"></ion-icon>
+    </ion-button>
+    <ion-button *ngIf="dismissButton" (click)="dismissModal()" style="--background: none; --box-shadow: none;" slot="end">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+    <ion-buttons *ngIf="backButtonEnd" slot="end">
+      <ion-back-button color="secondary" icon="chevron-back-outline" defaultHref="{{defaultHref ? defaultHref : 'dashboard'}}"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="home" (click)="goHome()" slot="end">
+      <ion-icon style="color:white; font-size: 32px ; margin: 10px 10px 0 0;" name="home-outline"></ion-icon>
+    </ion-buttons>
+    <ion-buttons *ngIf="centerTitle && (!backButtonEnd && !home && !notifications && !dismissButton)" slot="end">
+      <ion-icon style="color:white; font-size: 32px ; margin: 10px 10px 0 0;" ></ion-icon>
+    </ion-buttons>
+    <ion-buttons *ngIf="centerTitle && (!backButton && !menu)" slot="start">
+      <ion-icon style="color:white; font-size: 32px ; margin: 10px 10px 0 0;" ></ion-icon>
+    </ion-buttons>
+    <ng-content></ng-content>
+    <ion-title *ngIf="title" class="ion-text-center" style="white-space: normal; text-transform: uppercase; font-size: 14px;" color="secondary">
+      {{title | translate}}
+    </ion-title>
+  </ion-toolbar>
+  <ion-title *ngIf="bottomTitle" color="secondary">
+    <div style="white-space: normal; text-align: center; text-transform: uppercase; font-size: small;">{{bottomTitle | translate}}</div></ion-title>
+
+  
+</ion-header>

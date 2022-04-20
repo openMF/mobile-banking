@@ -1,0 +1,158 @@
+<app-header [svg]="true" [title]="headerTitle()" [backButton]="showBackButton()"></app-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="checkSoftTokenBlocked($event)" >
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
+      <div class="container-image" style="width: 50%;margin:auto; margin-bottom: -1rem;">
+        <ion-img src="/assets/logo-banbi-green.png" alt="Logo"></ion-img>
+      </div>
+
+    <ion-grid>
+      <div style="width: 80%; margin: 0 auto; margin-top: 0.8rem;">
+    <div style="text-align: center; font-size: 1.1rem; font-weight: 450; color: #4b4b4b; margin-top: 2rem;">
+                {{ (showSignInButton() ? 'Hello' : 'Welcome') | translate | titlecase }} {{ lastClientLogin | titlecase }}
+            </div>
+
+                <br>
+                <br>
+           
+                <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+                  
+                  <ion-item>
+                    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+                    <ion-input (input)="toOnlyRegex('password', '[^A-Za-z0-9]', false)" maxlength="8" formControlName="password" [type]="inputType" placeholder="{{ 'Password' | translate }}"
+                      clearInput></ion-input>
+                    <ion-icon *ngIf="icon; else elseTemplate" (click)="viewPassword()" name="eye-off-outline" slot="end">
+                    </ion-icon>
+                    <ng-template #elseTemplate>
+                      <ion-icon (click)="viewPassword()" name="eye-outline" slot="end"></ion-icon>
+                    </ng-template>
+                  </ion-item>
+                  <app-input-error [control]="loginForm.controls.password"></app-input-error>
+                </form>
+
+            <!--
+            <ion-grid style="text-align: center; width: 70%; margin-bottom: -1rem;margin-top: 0.5rem;">
+                <ion-row>
+                    <ion-col>
+                        <div *ngIf="show; else elseTemplateOne" style="margin-top: 5px;">{{ seletedNumbers[0] }}</div>
+                        <ng-template #elseTemplateOne>
+                            <div [ngClass]="lenSelectedNumbers >= 1 ? 'point-password' : 'point-password-outline'">
+                            </div>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col>
+                        <div *ngIf="show; else elseTemplateTwo" style="margin-top: 5px;">{{ seletedNumbers[1] }}</div>
+                        <ng-template #elseTemplateTwo>
+                            <div [ngClass]="lenSelectedNumbers >= 2 ? 'point-password' : 'point-password-outline'">
+                            </div>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col>
+                        <div *ngIf="show; else elseTemplateThree" style="margin-top: 5px;">{{ seletedNumbers[2] }}</div>
+                        <ng-template #elseTemplateThree>
+                            <div [ngClass]="lenSelectedNumbers >= 3 ? 'point-password' : 'point-password-outline'">
+                            </div>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col>
+                        <div *ngIf="show; else elseTemplateFour" style="margin-top: 5px;">{{ seletedNumbers[3] }}</div>
+                        <ng-template #elseTemplateFour>
+                            <div [ngClass]="lenSelectedNumbers >= 4 ? 'point-password' : 'point-password-outline'">
+                            </div>
+                        </ng-template>
+                    </ion-col>
+                    <ion-col>
+                        <ion-icon (click)="show = !show" *ngIf="show; else elseTemplate"
+                            style="font-size: 30px; color: grey;" name="eye"></ion-icon>
+                        <ng-template #elseTemplate>
+                            <ion-icon (click)="show = !show" style="font-size: 30px; color: grey;" name="eye-off">
+                            </ion-icon>
+                        </ng-template>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid style="text-align: center;">
+                <ion-row>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(1)">1</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(2)">2</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(3)">3</ion-fab-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(4)">4</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(5)">5</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(6)">6</ion-fab-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(7)">7</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(8)">8</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(9)">9</ion-fab-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="4">
+
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-fab-button (click)="add(0)">0</ion-fab-button>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-img (click)="delete()"
+                            style="width: 45px; height: 45px;margin-top: 7px; margin-left: 10px;"
+                            src="./assets/delete-filled.svg"></ion-img>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+            <div *ngIf="incorrectPin" class="custom-error-message">{{'Incorrect PIN' | translate}}</div>
+            -->
+        </div>
+    </ion-grid>
+</ion-content>
+
+<div style="margin-bottom: 4px; text-align: center;">
+<!-- <ion-button *ngIf="showRegisterButton()" [routerLink]="['/registration']" class="btn-second" expand="block"
+    color="medium">{{ 'Register ' | translate }}</ion-button> -->
+
+<ion-button (click)="goToRoute()" [disabled]="loginForm.invalid" class="btn-second" expand="block" color="primary"
+    [translate]="buttonText"></ion-button>
+
+    <ng-container *ngIf="showSignInButton()">
+        <div  class="soft-token">
+            <ng-container *ngIf="softTokenBlocked; else elseSoftToken">
+                <ion-icon class="btn-color" name="lock-closed-outline"></ion-icon>
+                <ion-button (click)="openUnlock()" type="button" expand="block" color="danger">{{ 'Unlock Soft Token' | translate }}</ion-button>
+            </ng-container>
+            <ng-template #elseSoftToken>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <ion-button [routerLink]="['/soft-token']" type="button" expand="block" color="primary">{{ 'Soft Token' | translate }}</ion-button>
+            </ng-template>
+        </div>
+        <a style="text-decoration: none; font-size: 12px; margin: 0.7rem auto; display: block;" (click)="goLogin()"
+            class="small-text">{{ 'Login with username and password' | translate }}</a>
+    </ng-container>
+    <!-- <div class="soft-token">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <ion-button [routerLink]="['/soft-token']" type="button" expand="block" color="primary">{{ 'Soft Token' | translate }}</ion-button>
+    </div> -->
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "api-9174832380600827840-512736",
+  "private_key_id": "b47af6e45df2c809bfa40c56a319885eb3c354b3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDTMRBtqsh2wp9O\n0uuYZaGdTK1IXtfW+FDJDydgt3LMSTw6QmtWi473h1fF/q3omFGEUh26NexpsiT+\nDdogo1h3r1H3dsxI1cS+y0sWSQNCbajpRWAALKqWfbDx9jEUYxChWH5TXFeYVifK\nS41/Cb5colHm+/icTlXU5wENESwY/wCiBH+hD3XfnZc/OoTHhPb5ymITTOydTjdQ\nzCzu4TAuaIWnoZ/uriWE2pfyCYw2ck8UsHuGZvCHVBR1c/3x9xeEtl772mNoO6GC\nEzoStd3S3dIEhgqMAX4Gaoz1BksPdq17rBXZpzII098Dqlw3MJAY6H1evGX+M/wN\namcRA6+lAgMBAAECggEAKeJZrT5JKpB3stTO57cEQeOSnD8/FEHEF9P7DcnkKRK/\nMJi6m/vqmznK1Rgo2m/W/uSgQ61tGRs9DeumXoG2ymnJWkhDxJAsyGAeIKnTTSnd\nbYIWQ4KYRGdiH+KhIjdxdWZNC3BNaQdxNcQdKFxA1jNVBffj+u/oQuSbh0FoGv6f\neuUiOA0LAG0OCS02AzHc0qUVN9Zr0M/+STsLnoHpUtAP9lfb0TO0mK4jowGO3gvV\nXnrVylc3HRth0fctP6qIvgELkpT+mL4tlaUyDScd1S6eYpvYI8jAVfTMj0o1K/6D\n303xQywzSRni1UaGGX7PN5u49qkOUmIhhBL4qjl6AQKBgQD2LDwHS9dsKDdL0nln\nkvjHG7SASkJobp8AOSawl+DL8ZjLm4rphitbQetk6y3z6zvcto4iji4ONG7CyrI7\n2J+3RhVwNvlbjqrhb/X7YEBOKtgamQDfcqxy4LDwCFydF7oId/X0l8FsnF4lLR/h\nzyevspzfk+TW8loUiz8xUEJ/AQKBgQDbn1bwg8uFcqi69ZGDxkgOzrbrgcSco+ta\n9F07yOxTFnIYj5BNn7Lr5RFnuw20Siy38qYHwlfqimO9ZdcdSQATJ0NvDpwrapUW\nOZbsa26KL05QoaZ/xRqfYEdlH6kb79hM7+acS/F7OPiMdwSHB/0LfIYLHip9Ui1R\nvD4zv/vUpQKBgQCYyP18vcp2+0LOkVP+P46d7QkLMouiyz1t4wqrQagoi8r8W45M\nv5P7MJ+LZBeCMvZVVwxCUCIveMVhqnISiLEgC6RUoBoFhDd0cYumt6dRnG/BmkKb\nbE2xgtjuMRJiAY7ZoLKLWwCWizo3Mpl+CZclCeMpNF4sNgBIjd/rmFedAQKBgHRz\nkqfJWlsSJwGrQFM9CexAE6Hglx3vlNYPiHgw245a8nivdvaR3U9TkN0NxAB67CdF\nVF/83p0QcD53B48RrCZ7xTfX6VrkEtVMCAioFl7TIpWCgURygOFNLc4i8YpMrMZu\n1jq90fdih/gDC7WFuNkkV/cBMcptjnYueFT8UU25AoGBAI8mAJQtysM6RBqSZCy1\n+JZXrv9+iU6zxUmCKIzRYn8AhCnA9clk7M87I8elTgillfU7juL5jBrT9MHerCDB\nWWZ4aFqOeGbkMl491uzSkmsZVaULopqzp9pB1SYyW/tMjriITMhsA9/532MdH4V/\nxbFKmQC6RxcB27MpXAt4GL8c\n-----END PRIVATE KEY-----\n",
+  "client_email": "bienestarmovil@api-9174832380600827840-512736.iam.gserviceaccount.com",
+  "client_id": "103932693854807133927",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bienestarmovil%40api-9174832380600827840-512736.iam.gserviceaccount.com"
+}
+

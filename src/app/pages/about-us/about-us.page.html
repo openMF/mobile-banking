@@ -1,0 +1,27 @@
+<!-- <ion-header>
+  <app-svg></app-svg>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-title color="secondary" translate>About us</ion-title>
+</ion-header> -->
+
+<app-header [svg]="true" [menu]="true" [title]="'About Us'"></app-header>
+
+<ion-content style="text-align: center">
+  <div>
+    <h4 style="color: #737373;font-weight: 900;">Bienestar Móvil</h4>
+    <div style="margin-bottom: 0.5rem;">{{ 'Version' | translate }} {{versionNumber}}</div>
+    <ion-img style="width: 90%; margin: auto;" src="/assets/logo-banbi-green.png" alt="Logo"></ion-img>
+    <p style=" color: #898989; font-size: 13px;">
+      © 2018 Banco del Bienestar SNC. <br> Banca Electrónica.
+    </p>
+    <div style="margin-top: 1rem;margin-bottom: 2rem;color: #898989;font-size: 13px;">
+      {{ 'All rights reserved' | translate }}.</div>
+    <a style="text-decoration: none;color: #898989;font-size: 13px;" routerLink="privacy" translate="Privacy policies"></a>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

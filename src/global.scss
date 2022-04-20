@@ -1,0 +1,201 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/*Add Font Montserrat*/
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+
+app-footer {
+    height: 38px;
+}
+
+.alert-message {
+    text-align: center !important;
+}
+
+ion-toolbar {
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.container-big {
+    width: 90%;
+    margin: 25px auto;
+}
+
+.container-small {
+    width: 80%;
+    margin: 25px auto;
+}
+
+ion-card {
+    box-shadow: none;
+}
+
+ion-input {
+    font-size: 13px !important;
+}
+
+ion-icon {
+    margin: 0px 15px 0 0px;
+    font-size: 16px;
+}
+
+.alert-wrapper {
+    background: linear-gradient(180deg, rgba(254, 254, 254, 1) 0%, rgba(220, 202, 160, 1) 100%) !important;
+}
+
+.alert-title {
+    color: #285d4d !important;
+    text-align: center;
+}
+
+.alert-button-inner,
+.alert-input,
+.alert-title {
+    font-weight: 600 !important;
+}
+.alert-input {
+    border-bottom: 1px solid #c6c6c6 !important;
+}
+
+.swiper-container-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    position: relative;
+    bottom: 0px;
+    padding-bottom: 3px;
+}
+
+.custom-error-message {
+    font-size: small;
+    padding-top: 3px;
+    padding-left: 20px;
+    color: var(--ion-color-danger);
+    text-align: center;
+}
+
+ion-searchbar {
+    .searchbar-input-container {
+        height: 32px !important;
+        input {
+            font-size: 14px !important;
+        }
+    }
+}
+
+.soft-token{
+    ion-icon{
+        color: white;
+        background: #285d4d;
+        padding: 10px;
+        border-radius: 50%;
+        display: inline-block; 
+        margin: 0 !important; 
+        position: relative; 
+        left: 10px; 
+        border: #ffffff 1px solid; 
+        z-index: 10;
+    }
+    ion-button{
+        display: inline-block; 
+        margin: 0; 
+        height: 26px; 
+        --border-radius: 0px;
+    }
+    display: inline-flex; 
+    align-items: center; 
+    margin-top: 20px;
+    position: relative;
+    right: 10px;
+}
+
+.modal {
+    --width: 100% !important;
+    --min-width: 80% !important;
+    --max-width: 80% !important;
+    --min-height: 80% !important;
+    --max-height: 80% !important;
+}
+
+@media (max-width: 350px) {
+    app-footer {
+        height: 34px;
+    }
+    .swiper-container-horizontal > .swiper-pagination-bullets,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction {
+        bottom: 5px;
+    }
+    
+}
+
+ion-spinner.main-spinner {
+    --color: #285d4d;
+    transform: scale(2);
+    position: absolute; 
+    top: 37%; 
+    left: 47%;
+}
+
+ion-spinner.header {
+    top: 31% !important;
+}
+
+$color-base: rgb(233, 233, 233);
+$color-highlight: rgb(219, 219, 219);
+
+ion-skeleton-text[animated] {
+  position: relative;
+  overflow: hidden;
+  background: $color-base;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, $color-base, $color-highlight, $color-base);
+    animation: progress 1s ease-in-out infinite;
+  }
+}
+
+@keyframes progress {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}

@@ -1,0 +1,58 @@
+<app-header [svg]="true" [backButton]="true" [title]="'¡Solo un paso más!'" [backButton]="true" [defaultHref]="'login'"
+  [img]="'/assets/header-icons/ajustes.png'"></app-header>
+<ion-content>
+  <div style="text-align: center; font-size: 16px; font-weight: 700; color: #193931; margin: 0">
+    <p style="text-transform: uppercase;">
+      {{ '¡Revisa tu correo!' | translate }}
+    </p>
+    Para finalizar el proceso de desbloqueo, revisa tu correo, te deberá llegar un código de desbloqueo que deberás proporcionar a continuación
+  </div>
+  <ion-card class="container-small">
+
+    <ion-card-content>
+
+      <form [formGroup]="renewForm" (ngSubmit)="renew()">
+        <ion-list>
+
+          <ion-item style="margin-top: 15px;">
+            <ion-label position="floating">{{ 'Activation code' | translate }}</ion-label>
+            <ion-input maxlength="10" formControlName="token" type="text" clearInput>
+            </ion-input>
+          </ion-item>
+          <app-input-error [control]="renewForm.controls.token"></app-input-error>
+
+          <ion-item style="margin-top: 15px;">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input maxlength="8" (input)="toOnlyRegex('password', '[^A-Za-z0-9]', false)" formControlName="password" placeholder="{{ 'New Password' | translate }}" [type]="type" clearInput>
+            </ion-input>
+            <ion-icon *ngIf="icon" (click)="viewPassword()" name="eye-off-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf="!icon" (click)="viewPassword()" name="eye-outline" slot="end"></ion-icon>
+          </ion-item>
+          <app-input-error [control]="renewForm.controls.password"></app-input-error>
+
+          <ion-item style="margin-top: 15px;">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input maxlength="8" (input)="toOnlyRegex('repeatPassword', '[^A-Za-z0-9]', false)" formControlName="repeatPassword" [type]="reType"
+              placeholder="{{ 'Confirm Password' | translate }}" clearInput></ion-input>
+            <ion-icon *ngIf="reIcon" (click)="viewRePassword()" name="eye-off-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf="!reIcon" (click)="viewRePassword()" name="eye-outline" slot="end"></ion-icon>
+          </ion-item>
+          <app-input-error [control]="renewForm.controls.repeatPassword"></app-input-error>
+
+        </ion-list>
+        <br>
+       
+          <ion-button type="submit" [disabled]="this.renewForm.invalid"  expand="block" color="primary" translate="Accept">
+          </ion-button>
+          <ion-button style="margin-top: 0.7rem;" [routerLink]="['/login']" routerDirection="backward" expand="block" color="medium">
+            {{ 'Cancel' | translate }}</ion-button>
+       
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+
+
+<app-footer></app-footer>

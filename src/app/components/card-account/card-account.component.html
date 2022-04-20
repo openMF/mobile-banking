@@ -1,0 +1,43 @@
+<ion-slides class="my-custom-slider" #slides (ionSlideDidChange)="slideChanged(slides)" pager="true">
+
+  <ion-slide *ngFor="let account of accounts">
+    <div class="slide">
+      <div *ngIf="account.blocked === true">
+        <ion-icon name="lock-closed-outline"></ion-icon>
+        <p>{{'This account is momentarily blocked' | translate}}</p>
+      </div>
+
+      <p *ngIf="settings.orientation === 'vertical'" class="ion-text-center">
+        <ion-text [ngStyle]="{'color': '#525252', 'font-size': settings.accountSize}" >{{'Acc.' | translate }} {{account.accountNo}}
+        </ion-text>
+      </p>
+
+      <p class="ion-text-center">
+        <ion-text [ngStyle]="{'color': '#112b22', 'font-size': settings.balanceSize}">
+          <ion-text *ngIf="settings.orientation === 'horizontal'"
+            [ngStyle]="{'color': '#112b22', 'font-size': settings.accountSize}">
+            {{'Acc.' | translate }} {{account.accountNo}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </ion-text>
+          <app-money-format [amount]="account.accountBalance"></app-money-format>
+        </ion-text>
+      </p>
+
+
+      <div [ngStyle]="{'width': settings.cardWidth, 'margin': 'auto', 'position': 'relative'}">
+        <img [ngClass]="account.blocked ? 'account-blocked' : ''" src="./assets/card.png" />
+        <span class="ion-text-uppercase"
+          style="color: #CBC0AE; text-align: left; font-size: 0.52rem; position: absolute; bottom: 2.3rem; left: 1rem;">
+          {{account.displayName}}
+        </span>
+      </div>
+    </div>
+  </ion-slide>
+
+</ion-slides>
+
+<!-- <ion-fab [hidden]="hideEditButton" horizontal="end" edge>
+  <ion-fab-button color="primary" size="medium">
+    <ion-icon name="create-outline"></ion-icon>
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-fab-button>
+</ion-fab> -->

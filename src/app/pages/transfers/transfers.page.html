@@ -1,0 +1,153 @@
+<app-header [svg]="true" [menu]="true" [backButtonEnd]="true" [title]="'Transfer'"
+  [img]="'/assets/header-icons/transferir.png'"></app-header>
+<ion-content  id="content">
+
+  <ng-template #elseTemplateSpinner>
+    <!-- Dots -->
+    <ion-spinner  class="main-spinner header" name="dots"></ion-spinner>
+  </ng-template>
+
+  <ng-container *ngIf="flag; else elseTemplateSpinner">
+
+    <div>
+      <div>
+  
+        <div style="text-align: center;"> <b style="color: #112b22; font-size: medium;">
+            {{ 'Origin Account' | translate }} </b></div>
+  
+        <app-card-account *ngIf="accounts.length > 0" [accounts]="accounts" [settings]="settings" [hideEditButton]="true" (initComponent)='onInitCardAccount($event)' (valueChange)='onChangeAccount($event)'>
+        </app-card-account>
+  
+      </div>
+  
+      <div>
+  
+        <ion-fab horizontal="end" edge>
+          <ion-fab-button (click)="onManageAccount()" size="medium">
+            <ion-icon name="add"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-fab-button>
+        </ion-fab>
+        <div style="text-align: center; margin-top: 1.6rem;"> <b style="color: #112b22; font-size: medium;">
+            {{ 'Destination Account' | translate }} </b></div>
+  
+        <div
+          style="color: #112b22; font-size: 0.7rem;font-weight: bold; margin-left: 1.3rem;margin-top: 1rem; margin-bottom: 0.4rem;">
+          {{ 'SAVED ACCOUNTS' | translate }}</div>
+  
+        <div *ngIf="savedAccounts.length > 0">
+          <ion-searchbar [(ngModel)]="beneficiarieSearch" style="width: 90%; margin: 0 auto;" (ionInput)="onChangeText($event.target.value)"
+            placeholder="{{ 'Search' | translate}}">
+          </ion-searchbar>
+          <div *ngIf="savedAccountsFiltered.length == 0" class="custom-error-message" style="margin-top: 15px;">
+            {{ 'No beneficiaries found' | translate}}</div>
+          <ion-list style="max-height: 10rem; overflow: auto; margin-top: 5px;">
+  
+            <ion-item-sliding *ngFor="let item of savedAccountsFiltered; index as index; trackBy: identify">
+  
+              <ion-item-options *ngIf="!item.isOwnAccount" side="start">
+                <ion-item-option (click)="onDelete(item.id, item.accountNumber, index)" color="danger">
+                  <ion-icon style="font-size: 1.5rem; margin: auto 10px;" name="trash-outline"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+  
+              <ion-item (click)="selectAccount(index, item)" [color]="item.color">
+                <ion-label>
+                  <h3>{{ (item.alias || item.name) | uppercase }}</h3>
+                  <h4 style="color: grey; font-size: x-small; font-weight: bold;">{{ item.bankEntity ? (banks[item.bankEntity] && banks[item.bankEntity].description || '') : 'BANCO DEL BIENESTAR'  }}</h4>
+                  <h5 style="font-size: x-small; color: grey;">{{ item.accountNumber }}</h5>
+                </ion-label>
+              </ion-item>
+  
+              <ion-item-options *ngIf="!item.isOwnAccount" side="end">
+                <ion-item-option (click)="onManageAccount(index)" style="background-color: #3880ff;">
+                  <ion-icon style="font-size: 1.5rem; margin: auto 10px;" name="pencil"></ion-icon>
+                </ion-item-option>
+              </ion-item-options>
+            </ion-item-sliding>
+  
+          </ion-list>
+        </div>
+        <div *ngIf="savedAccounts.length == 0" class="custom-error-message">
+          {{ 'Please enter a beneficiary to make a transfer' | translate}}</div>
+      </div>
+  
+    </div>
+  
+    <div *ngIf="isBeneficiarieSelected" style="width: 100%; height: 100%;">
+  
+      <div style="margin: auto;">
+        <br>
+  
+        <ion-card>
+  
+          <ion-card-header>
+            <div style="text-align: center;"> <b style="color: #AD915F; font-size: medium;"
+                translate="To Complete"></b><br>
+            </div>
+            <div style="text-align: center;">
+              <ion-item>
+                <ion-label style="text-align: center;">
+                  <ion-icon color="secondary" style="font-size: 2.1rem;" src="assets/icon/clipboardv2.svg"></ion-icon>
+                </ion-label>
+              </ion-item>
+            </div>
+          </ion-card-header>
+  
+  
+          <ion-card-content>
+            <form [formGroup]="transferForm" (ngSubmit)="onMakeTransfer()">
+              <ion-list>
+  
+                <ion-item>
+                  <ion-label position="stacked"> {{ 'Amount' | translate }} 
+                  </ion-label>
+                  <ion-input formControlName="transferAmount" maxlength="9" required inputmode="decimal" type="text"></ion-input>
+                </ion-item>
+                <app-input-error [control]="transferForm.controls.transferAmount"></app-input-error>
+  
+                <ion-item>
+                  <ion-label position="stacked"> {{ 'Reference' | translate }}
+                  </ion-label>
+                  <ion-input (input)="toOnlyRegex('transferDescription', '[^0-9]')" formControlName="transferDescription" type="tel" maxlength="7"></ion-input>
+                </ion-item>
+                <app-input-error [control]="transferForm.controls.transferDescription"></app-input-error>
+  
+                <ion-item>
+                  <ion-label position="stacked"> {{ 'Concept' | translate }}
+                  </ion-label>
+                  <ion-input (input)="toOnlyRegex('concept', '[^0-9A-Za-z ]')" formControlName="concept" maxlength="20" inputmode="text" type="text"></ion-input>
+                </ion-item>
+                <app-input-error [control]="transferForm.controls.concept"></app-input-error>
+  
+                <ion-item *ngIf="showRFC">
+                  <ion-label position="stacked"> {{ 'RFC of the beneficiary' | translate }} 
+                  </ion-label>
+                  <ion-input maxlength="13" formControlName="rfc" inputmode="text" type="text"></ion-input>
+                </ion-item>
+                <app-input-error [control]="transferForm.controls.rfc"></app-input-error>
+  
+              </ion-list>
+  
+              <br>
+  
+              <div class="ion-padding">
+                <ion-button [disabled]="transferForm.invalid" expand="block" type="submit" class="ion-no-margin">
+                  {{ 'Confirm' | translate }}
+                </ion-button>
+              </div>
+            </form>
+  
+            <br>
+          </ion-card-content>
+  
+        </ion-card>
+      </div>
+  
+    </div>
+
+  </ng-container>
+
+</ion-content>
+
+<app-footer *ngIf="flag"></app-footer>

@@ -1,0 +1,86 @@
+ion-row {
+    margin-bottom: 8px;
+}
+
+ion-fab-button {
+    margin: auto;
+    --background: white  !important;
+    --color: black;
+    --color-activated: white;
+}
+
+app-input-error {
+    text-align: center;
+}
+
+.custom-error-message {
+    text-transform: uppercase; 
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+}
+
+// ion-img:active {
+//     opacity: 0.6;
+// }
+
+.point-password {
+    border-radius: 10px; margin:auto; width: 10px;height: 10px;background-color: grey;
+    margin-top: 10px;
+}
+
+.point-password-outline {
+    border-radius: 10px; margin:auto; width: 10px;height: 10px;background-color: white; 
+    border: solid 2px grey;
+    margin-top: 10px;
+}
+
+.header-title{
+    text-align: center;
+    margin: 50px 0;
+    z-index: 100;
+    position: relative;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-second {
+    height: 32px;
+    width: 62%;
+    margin: 10px auto;
+    --border-radius: 5px;
+}
+
+.soft-token {
+    margin: 5px 0;
+}
+.btn-color{
+    background-color: #eb445a;
+}
+
+@media(max-width:380px){
+    ion-fab-button {
+        width: 70%;
+        height: 53px;
+    }
+
+    .btn-second {
+        height: 30px;
+        margin: 8px auto;
+    }
+}
+
+@media(max-width:350px){
+    ion-row {
+        margin-bottom: 2px;
+    }
+    ion-fab-button {
+        width: 63%;
+        height: 42px;
+    }
+    .btn-second {
+        height: 26px;
+        margin: 8px auto;
+    }
+}

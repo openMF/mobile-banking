@@ -1,0 +1,26 @@
+<app-header [svg]="true" [menu]="true" [title]="'Settings'" [img]="'/assets/header-icons/ajustes.png'"></app-header>
+
+<ion-content>
+  <ion-list class="container-big">
+    <ion-item routerLink="change-password">
+      <ion-icon style="margin: 0px 15px 0 0px;" name="lock-closed-outline"></ion-icon>
+      <ion-label>
+        <h4 translate="Change Password"></h4>
+      </ion-label>
+    </ion-item>
+    <ion-item button routerLink="change-phone">
+      <ion-icon style="margin: 0px 15px 0 0px;" name="call-outline"></ion-icon>
+      <ion-label>
+        <h4 translate="Change Phone"></h4>
+      </ion-label>
+    </ion-item>
+    <ion-item button routerLink="change-email">
+      <ion-icon style="margin: 0px 15px 0 0px;" name="mail-outline"></ion-icon>
+      <ion-label>
+        <h4 translate="Change Email"></h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<app-footer></app-footer>

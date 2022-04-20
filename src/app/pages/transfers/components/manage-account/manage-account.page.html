@@ -1,0 +1,82 @@
+<app-header [svg]="true" [dismissButton]="true" title="{{ type }} Beneficiary"
+  [img]="'/assets/header-icons/crear-cuenta.png'"></app-header>
+<ion-content>
+
+  <ng-template #elseTemplateSpinner>
+    <!-- Dots -->
+    <ion-spinner  class="main-spinner header" name="dots"></ion-spinner>
+  </ng-template>
+
+  <ion-card *ngIf="flag; else elseTemplateSpinner">
+
+    <form class="container-small" [formGroup]="form" (ngSubmit)="submit()">
+
+      <ion-list>
+
+        <ion-item>
+          <ion-label position="stacked"> {{ 'Card Number/Account/CLABE' | translate }} 
+          </ion-label>
+          <ion-input formControlName="accountNumber" maxlength="18" (input)="toOnlyRegex('accountNumber', '[^0-9]')" required type="tel"></ion-input>
+          <ion-icon *ngIf="searchButtonEnabled" (click)="search()"
+            style=" position: relative; top: 29px; left: 4px; font-size: 22px; margin: 0px;" name="search" slot="end">
+          </ion-icon>
+        </ion-item>
+        <app-input-error [control]="form.controls.accountNumber"></app-input-error>
+
+        <ion-item>
+          <ion-label position="stacked">{{ "Beneficiary's name" | translate }}
+          </ion-label>
+          <ion-input formControlName="name" required inputmode="text" type="text"></ion-input>
+        </ion-item>
+        <app-input-error [control]="form.controls.name"></app-input-error>
+
+        <ion-item>
+          <ion-label position="stacked">Alias</ion-label>
+          <ion-input maxlength="30" formControlName="alias" inputmode="text" type="text"></ion-input>
+        </ion-item>
+        <app-input-error [control]="form.controls.alias"></app-input-error>
+
+        <ion-item>
+          <ion-label position="stacked"> {{ 'Kind of product' | translate }} 
+          </ion-label>
+          <ion-select formControlName="accountType" [cancelText]="cancelText" [interfaceOptions]="accountTypeOption"
+            interface="action-sheet" placeholder="{{ 'Select an option' | translate }}">
+            <ion-select-option *ngFor="let item of beneficiaryAccountTypes" value="{{item.id}}">{{item.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <app-input-error [control]="form.controls.accountType"></app-input-error>
+
+        <ion-item>
+          <ion-label position="stacked"> {{ 'Bank / Institution' |  translate }} 
+          </ion-label>
+          <ion-select formControlName="bankId" [cancelText]="cancelText" [interfaceOptions]="bankIdOption"
+            interface="action-sheet" placeholder="{{ 'Select an option' | translate }}">
+            <ion-select-option *ngFor="let item of banks" value="{{item.id}}">{{item.description}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <app-input-error [control]="form.controls.bankId"></app-input-error>
+
+        <ion-item>
+          <ion-label position="stacked"> {{ 'Transfer limit' | translate }} 
+          </ion-label>
+          <ion-input (input)="toOnlyRegex('transferLimit', '[^0-9]')" maxlength="5" formControlName="transferLimit" required inputmode="number" type="text"></ion-input>
+        </ion-item>
+        <app-input-error [control]="form.controls.transferLimit"></app-input-error>
+
+      </ion-list>
+
+      <br>
+      <br>
+
+      <div class="ion-padding">
+        <ion-button [disabled]="form.invalid" expand="block" type="submit" class="ion-no-margin">
+          {{ 'Save' | translate }}</ion-button>
+      </div>
+    </form>
+
+  </ion-card>
+
+</ion-content>
+
+<app-footer *ngIf="flag"></app-footer>

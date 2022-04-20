@@ -1,0 +1,30 @@
+h4 {
+    font-size: medium;
+    font-weight: bold;
+}
+
+p, b, ul li {
+    font-size: small;
+}
+
+table tr td {
+    border: solid black 1px;
+    font-size: small;
+    text-align: left;
+    padding: 10px;
+    width: 50%;
+}
+
+table thead tr td {
+    border: solid black 1px;
+    font-size: small;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    width: 50%;
+}
+
+table {
+    margin: auto;
+    width: 100%;
+}

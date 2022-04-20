@@ -1,0 +1,24 @@
+<app-header [svg]="true" [menu]="true" [backButton]="true" [defaultHref]="'login'" [title]="'Register'"
+  [img]="'/assets/header-icons/registro.png'"></app-header>
+
+<ion-content>
+  <div class="container-small">
+
+    <ion-button color="primary" [routerLink]="['/registration/client/tab1']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label> <p> {{ 'I am already a bank client' | translate }} </p> </ion-label>
+    </ion-button>
+    <ion-button color="primary" [routerLink]="['/registration/client/tab3']">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label> <p> {{ 'I am not already a bank client' | translate }} </p> </ion-label>
+    </ion-button>
+    <!-- <ion-button color="primary" [routerLink]="['/registration/social-program/tab1']">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label> <p> {{ 'I am a beneficiary of a social program' | translate }} </p> </ion-label>
+    </ion-button>
+    <ion-button color="primary">
+      <ion-icon name="document-text-outline"></ion-icon>
+      <ion-label> <p> {{ 'I want to be client' | translate }} </p> </ion-label>
+    </ion-button> -->
+  </div>
+</ion-content>

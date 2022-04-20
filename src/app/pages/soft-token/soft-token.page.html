@@ -1,0 +1,62 @@
+<app-header [svg]="true" [title]="'Soft Token'"></app-header>
+
+<ion-content>
+
+  <div class="container-small" style="text-align: center;">
+    <span translate class="ion-text-center"
+      style="font-size: 18px; font-weight: 700; color: #545454">{{ 'Your operational soft token is:' | translate}}
+    </span>
+
+
+    <div style="margin: 30px 0;">
+      <div *ngIf="dynamicToken; else elseTemplate"
+        style="font-size: 40px;font-weight: 700;color: #14322c;padding: 12px;border-radius: 10px;border: 2px solid #14322c; min-width: 200px; max-width: 220px; margin: auto;">{{ dynamicToken }}</div>
+
+      <ng-template #elseTemplate>
+        <div style="border-radius: 10px;border: 2px solid #14322c; width: 200px; margin: auto; padding: 0.9rem 1rem 1.4rem 1rem;">
+          <ion-grid style="text-align: center;">
+            <ion-row>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+              <ion-col>
+                <div [ngClass]="'point-password'"></div>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+        </div>
+      </ng-template>
+      
+    </div>
+
+    <div style="border: solid #545454 5px; width: 200px; height: 200px; margin: auto; border-radius: 100px; text-align: center;vertical-align: middle; position: relative;">
+      <div style="position: absolute; top: 26%; left: 0; width: 100%;">
+        <div style="font-size: 16px; font-weight: 600; color: #545454; margin-bottom: 0.2rem;">
+          Tu código <br> expira en:
+        </div>
+        <span style="font-size: 45px;font-weight: 700;color: #14322c"> {{ seconds }} </span>
+      </div> 
+    </div>
+
+    <br><br>
+
+    <ion-button [routerLink]="['/login']" expand="block" style="text-transform: uppercase; min-width: 200px; max-width: 220px; margin: auto;" color="primary">
+      {{ 'Finish' | translate }}
+    </ion-button>
+
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

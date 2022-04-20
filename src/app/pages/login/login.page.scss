@@ -1,0 +1,101 @@
+// ion-img {
+//     padding: 12% 35% 0;
+//     position: relative;
+// }
+.dangerous {
+    color: var(--ion-color-danger);
+    font-size: medium;
+    padding-top: 3px;
+    padding-left: 20px;
+}
+ion-icon {
+    margin: 0px 15px 0 0px;
+    font-size: 22px;
+}
+ion-input {
+    font-size: 15.5px !important;
+}
+ion-content {
+    ion-grid {
+        // ion-img {
+        //     padding: 12% 35% 0;
+        //     position: relative;
+        // }
+        .container {
+            width: 55%;
+            margin: auto;
+            text-align: center;
+            margin: 50px auto;
+        }
+        ion-row {
+            ion-col {
+                ion-button {
+                    margin: 20px 0 20px;
+                }
+            }
+        }
+        div {
+            form {
+                ion-button {
+                    margin: 20px 0 10px 0;
+                }
+            }
+        }
+    }
+}
+
+ion-item {
+    margin-top: 40px;
+}
+
+.primary {
+    background-color: var(--ion-color-primary);
+}
+
+ion-grid,
+ion-col {
+    padding: 0;
+}
+
+@media (max-width: 450px) {
+    ion-content ion-grid .container {
+        width: 80%;
+        text-align: center;
+        margin: -15px auto;
+    }
+    ion-grid {
+        ion-img {
+            padding: 20% 35% 0 !important;
+        }
+    }
+
+    // ion-img {
+    //     padding: 20% 35% 0 !important;
+    // }
+}
+@media (max-width: 350px) {
+    ion-content ion-grid .container {
+        width: 85%;
+        text-align: center;
+    }
+    ion-row {
+        ion-col {
+            ion-button {
+                height: 35px;
+            }
+            ion-button:nth-child(1) {
+                margin: 20px 0 10px !important;
+            }
+            ion-button:nth-child(2) {
+                margin: 5px 0 10px !important;
+            }
+        }
+    }
+    ion-img {
+        width: 190px;
+    }
+
+    .soft-token {
+        margin: 0;
+    }
+}

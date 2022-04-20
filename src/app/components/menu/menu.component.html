@@ -1,0 +1,31 @@
+<ion-toolbar>
+  <div class="menu-size">
+    <ion-avatar style="width: 75px;height: 75px;margin-bottom: 0.7rem; padding: 2px; background-color: white;">
+      <img [src]="avatarUrl">
+    </ion-avatar>
+    <ion-text class="ion-text-capitalize" style="font-size: large; color: white;">{{ 'Hello' | translate}}
+      {{ this.userService?.shortName | titlecase }}
+    </ion-text>
+  </div>
+</ion-toolbar>
+
+<ion-content>
+  <ion-list id="inbox-list">
+    <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+      <ion-item *ngIf="p.url; else elseTemplate" (click)="selectedIndex = i" [routerLink]="[p.url]" routerDirection="forward" lines="none"
+        detail="false" [class.selected]="selectedIndex == i">
+        <ion-icon slot="start" [ios]="p.icon" [md]="p.icon"></ion-icon>
+        <ion-label style="text-transform: uppercase; font-size: 15px;">{{ p.title | translate }}</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+      <ng-template #elseTemplate>
+        <ion-item (click)="p.funtion(i)" lines="none" detail="false" [class.selected]="selectedIndex == i">
+          <ion-icon slot="start" [ios]="p.icon" [md]="p.icon"></ion-icon>
+          <ion-label style="text-transform: uppercase; font-size: 15px;">{{ p.title | translate }}</ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ng-template>
+    </ion-menu-toggle>
+  </ion-list>
+</ion-content>

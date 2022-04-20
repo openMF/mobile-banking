@@ -1,0 +1,64 @@
+<ion-content>
+
+  <div style="background-color: white;" #pageShare>
+    
+    <div class="header svg-correction ion-no-border" [ngStyle]="{'margin-bottom': '80px' }" no-border>
+      <img style="z-index: 105" class="profile-photo ion-img" src="/assets/header-icons/transferir-exitoso.png">
+      <ion-toolbar>
+        <ion-buttons (click)="modalController.dismiss()" style="color:white; margin-right: 1rem; --background: none; --box-shadow: none;" slot="end">
+          <ion-icon name="close"></ion-icon>
+        </ion-buttons>
+        <ion-buttons style="color:white; margin-left: 1rem; --background: none; --box-shadow: none;" (click)="onShare()" slot="start">
+          <ion-icon name="share-social-sharp"></ion-icon>
+        </ion-buttons>
+      </ion-toolbar>
+      <div style="white-space: normal; text-align: center; text-transform: uppercase; color: white; font-size: small; margin-top: -0.6rem;">{{'Transfer Success' | translate}}</div>
+      
+    </div>
+
+    <div class="container-big" style="font-size: xx-large; text-align: center;">
+      <div>
+        <span style="font-size: 17px; font-weight: 600; color: #464646; display: block;margin-bottom: 0.5rem;">{{dateFormat}}</span>
+        <!-- <h1><b>$ {{transferAmount | number : '1.2-2'}}</b></h1> -->
+        <app-money-format [amount]="transferAmount"></app-money-format>
+      </div>
+      <span translate class="ion-text-center" style="font-size: 14px; font-weight: 400; color: #cea16e;">This transfer
+        does not generate charge
+      </span>
+    </div>
+  
+    <div class="container-big" style="margin-top:20px">
+     
+      <h4>{{'Cuenta Origen' | translate}}:<span> {{hideAccountNumber(accountNoSelected)}}</span></h4>
+      <h4 *ngIf="beneficiary">{{'Nombre de Beneficiario' | translate}}:<span> {{beneficiary}}</span></h4>
+      <h4 *ngIf="destinationBank">{{'Banco Destino' | translate}}:<span> {{destinationBank}}</span></h4>
+      <h4>{{'Cuenta Destino' | translate}}:<span> {{hideAccountNumber(accountNumber)}}</span></h4>
+      <!-- <h4>{{'Importe de operación' | translate}}:<span> {{transferAmount}}</span></h4> -->
+      <h4>{{'Concepto de operación' | translate}}:<span> {{concept}}</span></h4>
+      <h4>{{'Referencia de operación' | translate}}:<span> {{reference}}</span></h4>
+      <!-- <h4>{{'Fecha de operación' | translate}}:<span> {{dateFormat}}</span></h4> -->
+      <h4>{{'Número de movimiento' | translate}}:<span> {{folio}}</span></h4>
+      <h4 *ngIf="transactionId">{{'Clave de rastreo' | translate}}:<span style="font-weight: bold; color: #cca578;"> {{transactionId}}</span></h4>
+      <p *ngIf="transactionId" style="text-align: center; font-size: small; font-weight: bold;">
+        Para verificar si tu transacción se realizó correctamente puedes visitar la página de <ion-text style="color: #cca578;" (click)="openBanxicoLink()">banxico.org.mx</ion-text> 
+        y darle seguimiento con tu Clave de rastreo
+      </p>
+      <!-- <div *ngIf="rfc">
+          <h4>{{'RFC' | translate}}:<span> {{rfc}}</span></h4>
+      </div> -->
+    
+    </div>
+  
+    <br><br>
+  
+    <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button (click)="onShare()" color="light">
+        <ion-icon style="font-size: xx-large;color: #3880FF; margin: auto;" name="share-social-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+  </div>
+
+</ion-content>
+
+
+<app-footer></app-footer>

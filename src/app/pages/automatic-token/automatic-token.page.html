@@ -1,0 +1,53 @@
+<app-header [svg]="true" [img]="'assets/header-icons/pass.png'" [title]="'Security Code'"></app-header>
+
+<ion-content>
+
+  <div class="container-small" style="text-align: center;">
+    <span translate class="ion-text-center"
+      style="font-size: 18px; font-weight: 700; color: #545454">{{ 'Tu clave dinámica para realizar tu operación es:' | translate}}
+    </span>
+
+    <div style="border-radius: 10px;border: 2px solid #14322c; width: 200px; margin: auto; padding: 0.9rem 1rem 1.4rem 1rem; margin-top: 1.6rem;">
+      <ion-grid style="text-align: center;">
+        <ion-row>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+          <ion-col>
+            <div [ngClass]="'point-password'"></div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    </div>
+    
+  </div>
+</ion-content>
+
+<div style="width: 100%; margin: auto; margin-bottom: 0.6rem;">
+  <div class="ion-text-center"
+      style="margin: auto; font-size: 16px; font-weight: 700; color: #545454; 
+        width: 80%">{{ 'Presiona aceptar para continuar la operación' | translate}}
+    </div>
+  <div style="width: 60%; margin: auto; margin-top: 0.7rem;">
+    <ion-button (click)="onAccept()" expand="block" style="text-transform: uppercase;" color="primary">
+      {{ 'Accept' | translate }}
+    </ion-button>
+    <ion-button (click)="onCancel()" expand="block" style="text-transform: uppercase; margin-top: 0.7rem;" color="medium">
+      {{ 'Cancel' | translate }}
+    </ion-button>
+  </div>
+</div>
+
+<app-footer></app-footer>

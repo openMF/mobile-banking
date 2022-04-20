@@ -1,0 +1,83 @@
+<app-header [svg]="true" [dismissButton]="true" [title]="'Movements'" [img]="'/assets/header-icons/movimientos.png'">
+</app-header>
+<ion-content>
+  <!-- List of Text Items -->
+
+  <ion-label *ngIf="(!movements || movements.length==0) && !isLoading">
+    <ion-title size="small">{{ 'No movements' | translate }}</ion-title>
+  </ion-label>
+  
+  <ion-list style="width: 90%; margin: auto;">
+
+    <ng-template #elseTemplateSkeleton>
+      <ion-item *ngFor="let item of [].constructor(8)">
+        <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ng-template>
+
+    <ng-container *ngIf="!isLoading; else elseTemplateSkeleton">
+      <ion-item *ngFor="let item of movements; index as index">
+        <ion-avatar slot="start">
+          <ion-icon *ngIf="item.transactionType.id === 1; else elseTemplateSvg"
+            [ngStyle]="{'color':  'green', 'margin-top':'7px','font-size':'x-large' }"
+            src="assets/icon/login.svg"></ion-icon>
+          <ng-template #elseTemplateSvg>
+            <ion-icon
+              [ngStyle]="{'color':  'red', 'margin-top':'7px','font-size':'x-large' }"
+              src="assets/icon/logout.svg"></ion-icon>
+          </ng-template>
+        </ion-avatar>
+        <ion-label>
+  
+          <ng-container *ngIf="item.paymentDetailData">
+            <h3 *ngIf="item.paymentDetailData && item.paymentDetailData.paymentType && item.paymentDetailData.paymentType.name === 'PAYMENT_ORDER'; else elseTemplate">
+              {{ ('PAYMENT_ORDER' | translate) }} </h3>
+            
+            <ng-template #elseTemplate>
+              <h3>
+                {{ item.transactionType.id === 1  ? ('Deposit' | translate) : ('Withdrawal' | translate) }} 
+                ({{ item.paymentDetailData.paymentType.name | translate }})</h3>
+            </ng-template>
+           
+          </ng-container>
+         
+          <h3 *ngIf="item.transfer">
+            {{ item.transactionType.id === 2  ? ('Transfer made' | translate) : ('Transfer received' | translate) }}</h3>
+  
+          <h5 style="font-size: x-small; color: grey;" *ngIf="item.paymentDetailData">
+            {{ item.transactionType.id === 1 ? ('Made a deposit for' | translate) : ('Made a withdrawal for' | translate)}}
+            {{ item.currency.displaySymbol}}{{item.amount | money }}</h5>
+          <h5 style="font-size: x-small; color: grey;" *ngIf="item.transfer">
+            {{ item.transactionType.id === 2 ? ('Made a transfer for' | translate) : ('Received a transfer for' | translate)}}
+            {{ item.currency.displaySymbol}}{{item.amount | money }}</h5>
+
+          <div style="font-size: x-small; color: grey;">
+            {{ 'Balance' | translate }}: {{ item.currency.displaySymbol}}{{item.runningBalance | money }}
+          </div>
+          <div style="font-size: x-small;">
+            <span>
+              {{ 'Folio' | translate }}: {{ item.transfer?.id || item.id }}            
+            </span>
+            <span style="float: right;">
+              {{item.submittedOnDate | date }}
+            </span>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+  </ion-list>
+</ion-content>
+
+<app-footer></app-footer>

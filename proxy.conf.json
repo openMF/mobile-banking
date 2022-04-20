@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+      "target": "https://mifos.infotec.mx/fineract-provider",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+}

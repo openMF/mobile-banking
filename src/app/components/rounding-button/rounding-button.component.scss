@@ -1,0 +1,25 @@
+.card-button {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card-button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.beautiful-rounded-button {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.beautiful-rounded-button-disabled {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    background-color: #a0a6ab;
+    border-radius: 10px;
+}

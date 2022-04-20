@@ -1,0 +1,14 @@
+<app-header [svg]="true" [backButton]="true" [title]="'Frequently asked questions'" [defaultHref]="'help'"></app-header>
+
+<ion-content>
+
+  <div class="container-big" style="text-align: center; font-size: 16px; font-weight: 700; color: #193931;">
+    <p>{{ question }}</p>
+  </div>
+  <div class="container-big" style="text-align: justify;font-size: 14px;">
+    <p [innerHTML]="answer"></p>
+  </div>
+
+</ion-content>
+
+<app-footer></app-footer>

@@ -1,0 +1,8 @@
+{
+  "name": "bancaMovil",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

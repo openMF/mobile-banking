@@ -1,0 +1,50 @@
+ion-row {
+    margin-bottom: 10px;
+}
+
+ion-fab-button {
+    margin: auto;
+    --background: white  !important;
+    --color: black;
+    --color-activated: white;
+}
+
+ion-img:active {
+    opacity: 0.6;
+}
+
+.custom-error-message {
+    text-transform: uppercase; 
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    font-size: 14px;
+}
+
+.point-password {
+    border-radius: 10px; margin:auto; width: 10px;height: 10px;background-color: grey;
+    margin-top: 10px;
+}
+
+.point-password-outline {
+    border-radius: 10px; margin:auto; width: 10px;height: 10px;background-color: white; 
+    border: solid 2px grey;
+    margin-top: 10px;
+}
+
+.header-title{
+    text-align: center;
+    margin: 50px 0;
+    z-index: 100;
+    position: relative;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-second {
+    height: 30px;
+    width: 62%;
+    margin: 4px auto;
+    --border-radius: 5px;
+}
+

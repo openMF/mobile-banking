@@ -1,0 +1,30 @@
+<app-header [svg]="true" [backButton]="true" [title]="'Change Phone'" [defaultHref]="'settings'"
+  [img]="'/assets/header-icons/ajustes.png'"></app-header>
+
+<ion-content>
+
+  <ion-card class="container-small">
+
+    <ion-card-content>
+
+      <form [formGroup]="form" (ngSubmit)="changePhone()">
+
+        <ion-item style="margin-top: 15px;">
+          <ion-icon style="margin: 0px 15px 0 0px;" name="call-outline"></ion-icon>
+          <ion-input (input)="toOnlyRegex('phone', '[^0-9]')" maxlength="10" formControlName="phone" placeholder="{{ 'New Phone' | translate }}" clearInput></ion-input>
+        </ion-item>
+        <app-input-error [control]="form.controls.phone"></app-input-error>
+        <br>
+        
+        <ion-button type="submit" [disabled]="!form.valid" expand="block" color="primary" translate="Change">
+        </ion-button>
+        <ion-button [routerLink]="['/settings']" routerDirection="backward" expand="block" fill="clear">
+          {{ 'Cancel' | translate }}</ion-button>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+
+<app-footer></app-footer>

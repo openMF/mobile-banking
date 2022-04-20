@@ -1,0 +1,21 @@
+<div class="card-button"
+  [ngClass]="{'beautiful-rounded-button': true}">
+  <div [ngSwitch]="iconType">
+    <div *ngSwitchCase="'check'">
+      <ion-icon [ngStyle]="{'opacity': disabled ? 0.5 : 1}" style="color: #fff;background:var(--ion-color-primary); font-size: 50px; border-radius: 10px;"
+        name="checkmark-outline">
+      </ion-icon>
+    </div>
+    <div *ngSwitchCase="'add'">
+      <ion-icon [ngStyle]="{'opacity': disabled ? 0.5 : 1}" style="color: #fff; background: var(--ion-color-warning); font-size: 50px; border-radius: 10px;"
+        name="add"></ion-icon>
+    </div>
+    <div *ngSwitchCase="'close'">
+      <ion-icon [ngStyle]="{'opacity': disabled ? 0.5 : 1}" style="color: #fff; background-color:var(--ion-color-danger); font-size: 50px; border-radius: 10px;"
+        name="close-outline"></ion-icon>
+    </div>
+  </div>
+</div>
+<div [ngStyle]="{'opacity': disabled ? 0.5 : 1}" style="text-align: center;margin-top: 0.4rem;" translate>
+  {{ title }}
+</div>

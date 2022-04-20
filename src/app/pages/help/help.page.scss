@@ -1,0 +1,45 @@
+.secondary {
+    background-color: var( --ion-color-secondary);
+}
+
+.text-white {
+    color: white;
+}
+
+ion-img {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: auto;
+}
+
+ion-label {
+    margin: 5px 0;
+}
+ion-icon {
+    margin: 2px;
+    font-size: 25px;
+}
+ion-input {
+    font-size: 15.5px !important;
+}
+
+ion-toolbar{
+    box-shadow: 5px 8px 22px 5px #757575;
+}
+
+h4 {
+    white-space: normal;
+}
+.container-big {
+    margin: 0px auto;
+}
+.shadow:after{
+        content: '';
+        top:0; left:0; right:0; bottom:0;
+        position: absolute;
+        -webkit-box-shadow: inset 0px 0px 10px 7px #000000;
+        -moz-box-shadow: inset 0px 0px 10px 7px #000000;
+        -ms-box-shadow: inset 0px 0px 10px 7px #000000;
+        -o-box-shadow: inset 0px 0px 10px 7px #000000;
+        box-shadow: inset 0px 0px 10px 7px #000000;    
+}

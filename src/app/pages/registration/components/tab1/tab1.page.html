@@ -1,0 +1,82 @@
+<app-header [svg]="true" [menu]="false" [backButton]="true" [defaultHref]="'login'" [title]="'Register'"></app-header>
+
+<ion-content>
+  <ion-card>
+
+    <ion-card-content>
+
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <ion-list>
+
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input (input)="toOnlyRegex('firstName', '[^A-Za-znÑäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]')" maxlength="50"  class="not-capitalize" type="text" placeholder="{{ 'First name' | translate | titlecase }}"
+              formControlName="firstName" clearInput></ion-input>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.firstName"></app-input-error>
+
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input (input)="toOnlyRegex('lastName', '[^A-Za-znÑäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]')" maxlength="50" type="text" placeholder="{{ 'Middle name' | translate }}" formControlName="lastName" clearInput>
+            </ion-input>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.lastName"></app-input-error>
+
+          <ion-item>
+            <ion-icon name="person-outline"></ion-icon>
+            <ion-input (input)="toOnlyRegex('surName', '[^A-Za-znÑäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ ]')" type="text" maxlength="50" placeholder="{{ 'Last name' | translate }}" formControlName="surName" clearInput>
+            </ion-input>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.surName"></app-input-error>
+
+          <ion-item>
+            <ion-icon name="mail-outline"></ion-icon>
+            <ion-input type="email" placeholder="{{ 'Email' | translate | titlecase }}" formControlName="email" clearInput>
+            </ion-input>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.email"></app-input-error>
+
+          <ng-container *ngIf="registrationType === 'client'">
+            <ion-item>
+              <ion-icon name="document-outline"></ion-icon>
+              <ion-input (input)="toOnlyRegex('accountNumber', '[^0-9]')" type="tel" maxlength="10" placeholder="{{ 'Client number' | translate }}" formControlName="accountNumber"
+                clearInput></ion-input>
+            </ion-item>
+            <app-input-error [control]="registerForm.controls.accountNumber"></app-input-error>
+          </ng-container>
+
+          <ion-item style="margin-top: 15px;">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input (input)="toOnlyRegex('password', '[^A-Za-z0-9]', false)" maxlength="8" formControlName="password" placeholder="{{ 'Password' | translate }}" [type]="type" clearInput>
+            </ion-input>
+            <ion-icon *ngIf="icon" (click)="viewPassword()" name="eye-off-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf="!icon" (click)="viewPassword()" name="eye-outline" slot="end"></ion-icon>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.password"></app-input-error>
+
+          <ion-item style="margin-top: 15px;">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <ion-input (input)="toOnlyRegex('confirmPassword', '[^A-Za-z0-9]', false)" maxlength="8" formControlName="confirmPassword" [type]="reType"
+              placeholder="{{ 'Confirm Password' | translate }}" clearInput></ion-input>
+            <ion-icon *ngIf="reIcon" (click)="viewRePassword()" name="eye-off-outline" slot="end"></ion-icon>
+            <ion-icon *ngIf="!reIcon" (click)="viewRePassword()" name="eye-outline" slot="end"></ion-icon>
+          </ion-item>
+          <app-input-error [control]="registerForm.controls.confirmPassword"></app-input-error>
+
+        </ion-list>
+
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button (click)="register()" type="submit" [disabled]="!registerForm.valid" expand="block" color="primary">
+      {{ 'Next' | translate }}</ion-button>
+    <ion-button style="margin-top: 0.6rem;" [routerLink]="['/login']" routerDirection="backward" expand="block" color="medium">
+      {{ 'Cancel' | translate }}</ion-button>
+  </div>
+
+</ion-content>
+
+<app-footer></app-footer>

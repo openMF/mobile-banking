@@ -1,0 +1,28 @@
+// .base-timer {
+//     position: relative;
+//     width: 70%;
+//     margin: auto;
+// }
+
+.point-password {
+    border-radius: 10px; margin:auto; width: 10px;height: 10px;background-color: #14322c;
+    margin-top: 10px;
+}
+
+
+.base-timer__circle {
+    fill: none;
+    stroke: none;
+}
+
+
+.base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+}
+
+@media(max-width:360px){
+    .container-small {
+        margin: 10px auto 0;
+    }
+}
