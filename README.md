@@ -36,10 +36,8 @@ $ ionic cordova run android
 Debug using Chrome, copy and paste.
 
 chrome://inspect/#devices
-```
- 
-## Getting started
 
+## Getting started
 Clone the project:
 
 ```
