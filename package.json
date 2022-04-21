@@ -58,7 +58,7 @@
     "cordova-base64-to-gallery": "^4.1.3",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.1.1",
-    "cordova-plugin-aes256-encryption": "^2.0.0",
+    "cordova-plugin-aes256-encryption": "2.0.1",
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-badge": "^0.8.8",
