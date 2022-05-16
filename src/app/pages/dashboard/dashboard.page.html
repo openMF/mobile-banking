@@ -1,51 +1,48 @@
 <app-header [svg]="true" [menu]="true"></app-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="initialize($event)">
+
+  <ion-refresher slot="fixed" (ionRefresh)="initialize($event)" >
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
   <ng-template #elseTemplateSpinner>
     <!-- Dots -->
-    <ion-spinner class="main-spinner" name="dots"></ion-spinner>
+    <ion-spinner  class="main-spinner" name="dots"></ion-spinner>
   </ng-template>
 
   <div *ngIf="!isLoading; else elseTemplateSpinner">
-    <div class="ion-text-center">
-      <ion-text style="color: #a3976a; font-size: small"
-        >{{ 'Last login' | translate}} {{this.loginInfo?.lastLogin | date:
-        'dd/MM/y h:mm a'}}</ion-text
-      >
-    </div>
 
-    <app-card-account
-      *ngIf="accounts.length > 0"
-      style="margin: auto"
-      [accounts]="accounts"
-      (initComponent)="onInitCardAccount($event)"
-      (valueChange)="onChangeAccount($event)"
-    ></app-card-account>
+    <div class="ion-text-center">
+      <ion-text style="color: #A3976A; font-size: small;">{{ 'Last login' | translate}} {{this.loginInfo?.lastLogin | date: 'dd/MM/y h:mm a'}}</ion-text>
+    </div>
+  
+  
+    <app-card-account *ngIf="accounts.length > 0" style="margin: auto" [accounts]="accounts" (initComponent)='onInitCardAccount($event)'  (valueChange)='onChangeAccount($event)'></app-card-account>
     <ion-tabs>
+  
       <!-- <ion-button (click)="presentModal()" style="margin: auto; margin-bottom: 0rem;" fill="clear" shape="round" size="small">
         <ion-icon slot="icon-only" name="chevron-up"></ion-icon>
       </ion-button> -->
-
-      <ion-tab-bar slot="bottom" style="z-index: 1">
+  
+      <!-- <ion-img (click)="scannerQRCode()" style="width: 4rem; height: 4rem; margin: auto; margin-bottom: -1rem; z-index: 2;" src="./assets/btn-codi.png"></ion-img> -->
+      <ion-tab-bar slot="bottom" style="z-index: 1;">
+    
         <!-- <ion-tab-button [routerLink]="['/pay-order']">
           <ion-icon name="document-text-outline"></ion-icon>
           <ion-label translate>Pay Order</ion-label>
         </ion-tab-button> -->
-
+  
         <ion-tab-button [routerLink]="['/transfers']">
           <ion-icon name="swap-horizontal-outline"></ion-icon>
           <ion-label translate>Transfer</ion-label>
         </ion-tab-button>
-
+  
         <ion-tab-button (click)="presentModal()">
           <ion-icon name="cash-outline"></ion-icon>
           <ion-label translate>Movements</ion-label>
         </ion-tab-button>
-
+    
         <!-- <ion-tab-button [routerLink]="['/collect-codi']">
           <ion-icon name="cash-outline"></ion-icon>
           <ion-label translate>Charge</ion-label>
@@ -55,7 +52,13 @@
           <ion-icon name="time-outline"></ion-icon>
           <ion-label translate>Postponed</ion-label>
         </ion-tab-button> -->
+  
       </ion-tab-bar>
+      
     </ion-tabs>
   </div>
+
 </ion-content>
+
+
+

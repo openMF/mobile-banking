@@ -1,0 +1,48 @@
+<app-header [backButton]="showBackButton === 'true'" [centerTitle]="false" [svg]="true" [title]="'Pay Order'">
+  <ion-buttons (click)="onShare()" slot="end">
+    <ion-icon style="color:white; font-size: 25px ; margin-right: 10px;" name="share-social-sharp"></ion-icon>
+  </ion-buttons>
+  <ion-buttons *ngIf="showBackButton !== 'true'" slot="start">
+    <ion-icon style="color:white; font-size: 32px ; margin: 10px 10px 0 0;" ></ion-icon>
+  </ion-buttons>
+</app-header>
+<ion-content>
+
+  <div style="background-color: white;" #pageShare>
+
+    <div style="text-align: center; width: 220px; margin: auto; margin-top: 1rem; background-color: white;">
+      <ion-label style="text-align: center;">
+        <ngx-barcode [bc-value]="code" bc-format="EAN13" [bc-display-value]="true"></ngx-barcode>
+      </ion-label>
+    </div>
+    
+    <div class="container-small">
+      <h4> <b><span translate>Beneficiary</span>:</b> <br> {{ displayName | titlecase }} </h4>     
+      <h4> <b><span translate>Reference</span>:</b> <br> {{ (routingCode || 'Doesn´t apply') | translate }} </h4>  
+    </div>
+    
+    <br>
+  
+    <div style="font-size: 1.7rem; font-weight: bold; text-align: center;">
+      <app-money-format [amount]="transactionAmount"></app-money-format>
+    </div>
+
+    <br>
+  </div>
+
+  <div style="width: 70%; position: absolute;bottom: 0; right: 15%;">
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <app-rounding-button title="Ready" routerLink="/dashboard" iconType="check"></app-rounding-button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<app-footer></app-footer>
+

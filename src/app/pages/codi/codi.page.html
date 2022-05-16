@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Codi</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>{{ 'codi.title' | translate }}</h1>
+
+  <form [formGroup]="codiForm" (ngSubmit)="createQr()">
+    <ion-item>
+      <ion-icon name="cash-outline" slot="start"></ion-icon>
+      <ion-input type="number" formControlName="payment"
+        placeholder="{{ 'How much do you want to charge' | translate }}" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="bulb-outline" slot="start"></ion-icon>
+      <ion-input type="text" formControlName="concept" placeholder="{{ 'Concept' | translate }}" clearInput></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="pricetag-outline" slot="start"></ion-icon>
+      <ion-input type="text" formControlName="reference" placeholder="{{ 'Reference' | translate }}" clearInput>
+      </ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!codiForm.valid" expand="block" color="primary">{{ 'Create QR' | translate }}
+    </ion-button>
+  </form>
+
+  <ngx-qrcode qrc-element-type="canvas" [qrc-value]="qrData">
+  </ngx-qrcode>
+
+  <ion-button (click)="scanCode()" expand="block" fill="clear">{{ 'Scanner' | translate }}</ion-button>
+  <ion-button (click)="downloadQr()" expand="block" fill="clear">{{ 'Download QR' | translate }}</ion-button>
+
+</ion-content>

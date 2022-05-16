@@ -1,0 +1,45 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="secondary"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="secondary" translate>Postponed</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<app-header [svg]="true" [backButton]="true" [defaultHref]="'dashboard'" [title]="'Postponed'" [img]="'/assets/header-icons/pospuestos.png'"></app-header>
+
+<ion-content>
+  <!-- List of Text Items -->
+  <ion-list>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon style="margin-top: 7px;font-size: x-large;" src="assets/icon/qr.svg"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight: bold;">Jorge López Pérez</h3>
+        <h4 style="font-size: small; text-align: right;">Pago de tienda departamental</h4>
+        <h5 style="font-size: x-small; color: green; font-weight: bold;">$5,000.00</h5>
+      </ion-label>
+      <ion-label side="end">
+        <h4 style="font-size: small; text-align: right;">25/03/2020</h4>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon style="margin-top: 7px;font-size: x-large;" src="assets/icon/qr.svg"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight: bold;">Roberto Bonifaz</h3>
+        <h4 style="font-size: small;">Pago de préstamo</h4>
+        <h5 style="font-size: x-small; color: green; font-weight: bold;">$1,200.50</h5>
+      </ion-label>
+      <ion-label side="end">
+        <h4 style="font-size: small; text-align: right;">01/03/2020</h4>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<app-footer></app-footer>
+

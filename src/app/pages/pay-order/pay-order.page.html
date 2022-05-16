@@ -1,0 +1,80 @@
+<app-header [svg]="true" [menu]="true" [img]="'/assets/header-icons/payment-order.png'" [title]="'Pay Order'"></app-header>
+<ion-content>
+
+  <app-wrapper>
+    <div style="margin: auto; width: 80%;" class="ion-text-center ion-text-uppercase">
+      <b>
+        <ion-text  translate> How much do you want to withdraw? </ion-text> 
+      </b>
+    </div>
+
+    <div *ngIf="insufficientBalance" style="text-transform: capitalize;text-align: center;margin-top: 1rem;margin-bottom: -0.5rem;" class="dangerous">
+      {{ 'Insufficient balance' | translate }}
+    </div>
+  
+    <div class="container-small">
+      <form [formGroup]="formGroup">
+        <ion-list>
+
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-select id="savingAccount" formControlName="savingAccount" [cancelText]="cancelText" [interfaceOptions]="selectOption" 
+              interface="action-sheet" placeholder="{{ 'Select an account' | translate }}">
+              <ion-select-option *ngFor="let item of savingsAccounts" [value]="item">{{ item.accountNo }} (${{ item.availableBalance | money }}) </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.savingAccount"></app-input-error>
+          </div>
+          
+          <ion-item>
+            <ion-label position="floating" translate>Amount</ion-label>
+            <ion-input (paste)="onPaste($event)" (input)="toOnlyRegex('transactionAmount', '[^0-9]')" maxlength="4" formControlName="transactionAmount" required inputmode="numeric" type="text"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.transactionAmount"></app-input-error>
+          </div>
+    
+          <!-- <ion-item>
+            <ion-label position="floating" translate>Concept<ion-text>*</ion-text></ion-label>
+            <ion-input formControlName="concept" required inputmode="text" type="text"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.concept"></app-input-error>
+          </div> -->
+    
+          <ion-item>
+            <ion-label position="floating" translate>Reference</ion-label>
+            <ion-input formControlName="routingCode" (input)="toOnlyRegex('routingCode', '[^0-9]')" maxlength="7" inputmode="numeric" type="text"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.routingCode"></app-input-error>
+          </div>
+  
+        </ion-list>
+    
+      </form>
+    </div>
+  
+    
+    <ion-grid style="width: 70%;position: absolute; bottom: 0.2rem; right: 15%;">
+      <ion-row>
+        <ion-col>
+          <app-rounding-button title="Cancel" iconType="close" (click)="onCancel()"></app-rounding-button>
+        </ion-col>
+        <ion-col>
+          
+        </ion-col>
+        <ion-col>
+          <app-rounding-button [disabled]="!canGeneratePayOrder" title="Accept" (click)="onClick()" iconType="check"></app-rounding-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-progress-bar *ngIf="loadingData" style="position: absolute; bottom: 0; right: 0;" type="indeterminate"></ion-progress-bar>
+    
+  </app-wrapper>
+
+</ion-content>
+
+<app-footer></app-footer>

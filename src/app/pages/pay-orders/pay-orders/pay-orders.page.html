@@ -1,0 +1,73 @@
+<app-header [menu]="true" [title]="'Pay Orders'" [img]="'/assets/header-icons/movimientos.png'">
+</app-header>
+<ion-content>
+  <!-- List of Text Items -->
+
+  <!-- <ion-label>
+    <ion-title size="small">{{ 'No movements' | translate }}</ion-title>
+  </ion-label> -->
+  <ion-list style="width: 80%; margin: auto; margin-top: -0.8rem;">
+    <ion-item>
+      <ion-label position="stacked"></ion-label>
+      <ion-select style="text-transform: uppercase;" [(ngModel)]="payOrderStatus"  [cancelText]="cancelText" [interfaceOptions]="selectOption" 
+        interface="action-sheet" placeholder="{{ 'See Pay Orders' | translate }}">
+        <ion-select-option *ngFor="let item of payOrdersTypes" [value]="item.key">{{ item.value | translate | titlecase }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+  <br>
+  <div *ngIf="loadingData" style="width: 85%;margin: auto;">
+    <ion-list>
+      <ion-item *ngFor="let item of [].constructor(6)">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-list style="width: 90%; margin: auto; margin-top: -0.8rem;">
+
+    <ion-item-sliding *ngFor="let item of filterPayOrders">
+
+      <ion-item-options *ngIf="item.status === 'ACTIVE'" side="start">
+        <ion-item-option (click)="cancelPayOrder(item)" color="danger">
+          <ion-icon style="font-size: 1.5rem; margin: auto 10px;" name="trash-outline"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+      <ion-item (click)="goToBarcode(item)">
+        <ion-avatar slot="start">
+          <ion-icon
+            [ngStyle]="{'color': getConfig(item.status).color, 'margin-top':'7px','font-size':'x-large' }"
+            src="assets/icon/barcode.svg"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+    
+          <h3> {{ 'Pay Order' | translate }} {{ getConfig(item.status).statusText | translate }} </h3>
+    
+          <h5 style="font-size: small; color: grey;">
+            {{ 'For a total of' | translate }}
+            ${{ item.amount | money }}</h5>
+          
+          <h5 style="font-size: x-small;"> {{ 'Invoice' | translate }}: {{ item.code }}   <span style="float: right;"> {{ item.createdOn | date }} </span> </h5>
+        </ion-label>
+      </ion-item>
+
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>
+
+<app-footer></app-footer>

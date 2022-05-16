@@ -1,0 +1,44 @@
+<app-header [svg]="true" [backButton]="true" [title]="'QR Code CoDi'"></app-header>
+<ion-content>
+
+  <div style="background-color: white;" style="text-align: center; width: 160px; height: 160px; margin: 0 auto -2rem auto;">
+    <ngx-qrcode
+      qrc-element-type="img"
+      [qrc-value]="qrData">
+    </ngx-qrcode>
+  </div>
+
+  
+  <div class="container-small">
+    <ion-list>
+      <ion-item>
+        <p> <b><span translate>Beneficiary</span>:</b> <br> Emiliano Zapata Salazar </p> 
+      </ion-item>
+      <ion-item>
+        <p> <b><span translate>Concept</span>:</b> <br> {{ concept }} </p> 
+      </ion-item>
+      <ion-item>
+        <p> <b><span translate>Reference</span>:</b> <br> {{ (reference || 'Doesn´t apply') | translate }} </p>  
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div style="font-size: 1.7rem; font-weight: bold; text-align: center; margin-top: -1rem;">
+    <app-money-format [amount]="amount"></app-money-format>
+  </div>
+
+  <div style="width: 70%; position: absolute;bottom: 0; right: 15%;">
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <app-rounding-button title="Ready" routerLink="/dashboard" iconType="check"></app-rounding-button>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
+
+<app-footer></app-footer>

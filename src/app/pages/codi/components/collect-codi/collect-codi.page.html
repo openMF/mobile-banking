@@ -1,0 +1,63 @@
+<app-header [svg]="true" [menu]="true" [img]="'/assets/header-icons/cobrar-codi.png'" [title]="'Charge with CoDi'"></app-header>
+<ion-content>
+
+  <app-wrapper>
+    <div style="margin: auto; width: 80%;" class="ion-text-center ion-text-uppercase">
+      <b>
+        <ion-text  translate> How much do you want to charge? </ion-text> 
+      </b>
+    </div>
+  
+    <div class="container-small">
+      <form [formGroup]="formGroup">
+        <ion-list>
+          
+          <ion-item>
+            <ion-label position="floating" translate>Amount</ion-label>
+            <ion-input formControlName="amount" required inputmode="decimal" type="number"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.amount"></app-input-error>
+          </div>
+    
+          <ion-item>
+            <ion-label position="floating" translate>Concept</ion-label>
+            <ion-input formControlName="concept" required inputmode="text" type="text"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.concept"></app-input-error>
+          </div>
+    
+          <ion-item>
+            <ion-label position="floating" translate>Reference</ion-label>
+            <ion-input formControlName="reference" inputmode="text" type="text"></ion-input>
+          </ion-item>
+          <div style="padding-left: 20px;">
+            <app-input-error colorClass="danger" [control]="formControls.reference"></app-input-error>
+          </div>
+  
+        </ion-list>
+    
+      </form>
+    </div>
+  
+    
+    <ion-grid style="width: 70%;position: absolute; bottom: 0.2rem; right: 15%;">
+      <ion-row>
+        <ion-col>
+          <app-rounding-button title="Cancel" iconType="close" (click)="onCancel()"></app-rounding-button>
+        </ion-col>
+        <ion-col>
+          
+        </ion-col>
+        <ion-col>
+          <app-rounding-button [disabled]="formGroup.invalid" title="Accept" (click)="onClick()" iconType="check"></app-rounding-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </app-wrapper>
+
+</ion-content>
+
+<app-footer></app-footer>

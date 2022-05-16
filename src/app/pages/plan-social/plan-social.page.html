@@ -1,0 +1,17 @@
+<app-header [svg]="true" [backButton]="true" [defaultHref]="'dashboard'" [title]="'Programas Sociales'"
+  [img]="'/assets/header-icons/movimientos.png'"></app-header>
+<ion-content *ngIf="flag">
+
+  <ion-label *ngIf="!programs || programs.length==0 ">
+    <ion-title size="small" translate>{{ 'No social programs' | translate }}</ion-title>
+  </ion-label>
+  <ion-list style="width: 90%;margin: auto;">
+    <ion-item *ngFor="let item of programs" (click)="goToDetails(item)">
+      <ion-label>
+        {{item.name}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<app-footer></app-footer>

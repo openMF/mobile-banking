@@ -1,0 +1,39 @@
+ion-item {
+    //--border-color: var(blue);
+    --highlight-color-invalid: red; // invalid underline color
+    --highlight-color-valid: green; // valid underline color
+    --background: white;
+
+    ion-label {
+        color: rgb(121, 121, 121) !important;
+    }
+
+}
+
+ion-item:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.primary {
+    background-color: var(--ion-color-primary);
+}
+
+.dangerous {
+    color: var(--ion-color-danger);
+    font-size: medium;
+    padding-top: 3px;
+    padding-left: 20px;
+}
+
+.footer-ios ion-toolbar:first-of-type {
+    --border-width: 0;
+}
+
+b {
+    color: #6b6b6b;
+}
+
+.container-small {
+    margin: 0px auto;
+    margin-top: 0.4rem;
+}

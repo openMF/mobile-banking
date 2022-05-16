@@ -1,0 +1,47 @@
+<app-header [svg]="true" [title]="'Beca Benito Juárez'" [defaultHref]="'plan-social'"></app-header>
+
+<ion-content>
+
+  <div class="container-big" style="text-align: center; font-size: 16px; font-weight: 700; color: #193931;">
+    <p>
+      Beca Universal para estudiantes de Educación Media Superior Benito Juárez
+    </p>
+  </div>
+  <div class="container-big" style="text-align: justify;font-size: 14px;">
+    <ion-img src="https://www.gob.mx/cms/uploads/image/file/524755/Eduaci_n_BEca_Edicacoi_Beca_Educaci_n_Media_Superior.jpg"></ion-img>
+
+    <br>
+
+    <b>Población a la que está dirigida:</b> 
+    <p>
+      Alumnas y alumnos que cursan la Educación Media Superior en instituciones públicas de modalidad escolarizada.
+    </p>
+
+    <b>Registro:</b> 
+    <p>
+      Se realiza directamente en los planteles escolares, con personal acreditado y capacitado que realiza el padrón. La Coordinación Nacional informa a la escuela la fecha y el medio de entrega.
+    </p>
+
+    <b>Monto y forma de pago:</b> 
+    <p>
+      Consta de 800 pesos mensuales entregados bimestralmente por becario (1,600 pesos bimestrales), durante los diez meses que dura el ciclo escolar.
+    </p>
+
+    <p>
+      Dependiendo de la localidad donde viva el becario, puede ser mediante una orden de pago para retirar en alguna sucursal bancaria (física o electrónica) o en mesas de pago establecidas en localidades donde no hay bancos.
+    </p>
+
+  </div>
+
+  <div class="container-big">
+    <div style="margin: 0.7rem auto; text-align: center;">
+      <a style="text-decoration: none; font-size: small;" target="blank" href="https://www.gob.mx/becasbenitojuarez/articulos/beca-benito-juarez-para-jovenes-de-educacion-media-superior-216589">
+        {{ 'More info' | translate }}</a>
+    </div>
+   
+    <ion-button [routerLink]="['/dashboard']" expand="block" color="primary" translate="Accept"></ion-button>
+  </div>
+
+</ion-content>
+
+<app-footer></app-footer>
